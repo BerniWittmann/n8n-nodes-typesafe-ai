@@ -290,7 +290,7 @@ export const typeSafeAiProperties: INodeProperties[] = [
 						required: true,
 						default: 'data',
 						description: 'The name of the input binary field that holds the image',
-						hint: 'The image must be PNG or JPEG, 256 to 1568 pixels on each side',
+						hint: 'The image must be PNG or JPEG, 280 to 1568 pixels on each side',
 					},
 					{
 						displayName: 'Reference',

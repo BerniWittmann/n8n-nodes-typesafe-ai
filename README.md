@@ -46,7 +46,7 @@ All the questions in a request are asked about the same state. The [State](https
 | State | `{"door": "door-photo-7f3a"}` |
 | Instructions | ``Is there a person in `door`?`` |
 
-TypeSafe matches a reference anywhere in the text, even inside a word, so use one that can't occur by accident. Each image must be 256 to 1568 pixels on each side. Images are a preview feature of TypeSafe: the [Images](https://docs.typesafe.ai/images) page covers the limits and where an image can go.
+TypeSafe matches a reference anywhere in the text, even inside a word, so use one that can't occur by accident. Each image must be 280 to 1568 pixels on each side. Images are a preview feature of TypeSafe: the [Images](https://docs.typesafe.ai/images) page covers the limits and where an image can go.
 
 **Model** lists the models your API key can use. The [Models](https://docs.typesafe.ai/models) page describes each one and its aliases.
 
