@@ -565,6 +565,11 @@ describe('Images', () => {
 				},
 				animation: { data: 'R0lG', mimeType: 'image/gif', fileName: 'c.gif' },
 				unnamed: { data: JPEG_BYTES.toString('base64'), mimeType: 'image/jpg' },
+				download: {
+					data: JPEG_BYTES.toString('base64'),
+					mimeType: 'application/octet-stream',
+					fileName: 'photo.bin',
+				},
 			},
 		},
 	];
@@ -668,6 +673,17 @@ describe('Images', () => {
 		const image = (options.body as FormData).get('image-0') as File;
 		expect(image.type).toBe('image/jpeg');
 		expect(image.name).toBe('image-0');
+	});
+
+	it('sends application/octet-stream as is, for the API to check', async () => {
+		const options = await send({
+			...imageParameters,
+			'images.image': [{ binaryPropertyName: 'download', reference: 'photo-ref' }],
+		});
+
+		const image = (options.body as FormData).get('image-0') as File;
+		expect(image.type).toBe('application/octet-stream');
+		expect(Buffer.from(await image.arrayBuffer())).toEqual(JPEG_BYTES);
 	});
 
 	it('accepts a reference used only in criteria', async () => {

@@ -67,6 +67,9 @@ const IMAGE_MIME_TYPES: Record<string, string> = {
 	'image/png': 'image/png',
 	'image/jpeg': 'image/jpeg',
 	'image/jpg': 'image/jpeg',
+	// n8n often labels a downloaded image this way. The API accepts it and
+	// checks the bytes itself.
+	'application/octet-stream': 'application/octet-stream',
 };
 
 /** All checks run before any image bytes are loaded, so a bad entry fails fast */

@@ -218,8 +218,10 @@ always sees a single field called **State**.
 | Input Binary Field | string, required | `data` | The input item's binary field that holds the image. |
 | Reference | string, required | — | The text that stands for the image. The user writes it in the state, instructions or criteria where the image belongs. |
 
-The image MUST be PNG or JPEG. The node MUST NOT check the image's size or
-pixel dimensions: the API enforces its own limits and its error is shown.
+The image MUST be PNG or JPEG. A binary typed `application/octet-stream` MUST
+be sent as is, because n8n often labels a downloaded image that way and the API
+checks the bytes itself. The node MUST NOT check the image's size or pixel
+dimensions: the API enforces its own limits and its error is shown.
 
 ### 5.4 Questions — Evaluate only
 
@@ -404,7 +406,7 @@ MUST say how to fix it where the message alone does not.
 
 For **Images**, the node MUST reject, without calling the API: a blank
 **Reference**, a **Reference** used by two entries, and an image that is not
-PNG or JPEG. A missing binary field MUST fail with n8n's own binary data error.
+PNG or JPEG or typed `application/octet-stream`. A missing binary field MUST fail with n8n's own binary data error.
 A **Reference** that appears in no string value of the state or questions MUST
 be rejected too, because the API reports it only as "Invalid image request".
 Object keys do not count, because the API does not replace them.
